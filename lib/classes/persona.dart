@@ -22,7 +22,7 @@ class Persona {
         required this.avatar,
     });
 
-    factory Persona.fromJson(Map<String, dynamic> json) => new Persona(
+    factory Persona.fromJson(Map<String, dynamic> json) => Persona(
         id: json['id'],
         email: json['email'],
         firstName: json['first_name'],

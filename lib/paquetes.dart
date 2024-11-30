@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 
 void getReqRespService() {
 
-  // final url = 'https://reqres.in/api/users?page=2';
   final url = Uri.parse('https://reqres.in/api/users?page=2');
   http.get(url).then( (res) {
     
@@ -31,7 +30,10 @@ void getReqRespService() {
 
 void getPais() {
 
-  final url = Uri.parse('https://restcountries.eu/rest/v2/alpha/col');
+  final url = Uri.parse('https://restcountries.eu/rest/v2/alpha/col');// Actualizar endpoint: Page not found
+
+  // Endpoint actual:
+  // final url = Uri.parse('https://restcountries.com/v3.1/alpha/col');
   http.get(url).then( (res) {
     
     final col = paisFromJson( res.body );
@@ -40,7 +42,9 @@ void getPais() {
     print('Pais: ${ col.name }');
     print('Población: ${ col.population }');
     print('Fronteras:');
-    col.borders.forEach((f) => print('   $f'));
+    for (var f in col.borders) {
+      print('   $f');
+    }
     print('Idioma: ${ col.languages[0].nativeName }');
     print('Lat: ${ col.latlng[0] }');
     print('Lng: ${ col.latlng[1] }');
